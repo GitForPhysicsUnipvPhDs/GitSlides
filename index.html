@@ -402,6 +402,121 @@
 					</section>
 
 				</section>
+
+
+
+				<!-- Collaborate using github flow	-->
+				<section>
+
+					<!-- Collaborating using the github flow -->
+					<section>
+						<h2>Collaborating using <a href="https://guides.github.com/introduction/flow/">the github flow</a></h2>
+						<a>
+							<img src="./resources/githubflow-online.png" alt="reveal.js logo" style="height: 14em; margin: 0 auto 4rem auto; background: transparent;" class="demo-logo">
+						</a>
+					</section>
+
+					<!-- Add a collaborator to your repo -->
+					<section data-background-video="./resources/invite_collab.webm" data-background-video-loop="loop">
+						<div style="background-color: rgba(0, 0, 0, 0.5); color: #fff; position:absolute; bottom:-15em; width:100%; height:auto;">
+							<h3>Add a collaborator to your repository</h3>
+						</div>
+					</section>
+
+					<!-- Accept the collaboration invite -->
+					<section data-background-video="./resources/accept_collab_crop.webm" data-background-video-loop="loop">
+						<div style="background-color: rgba(0, 0, 0, 0.5); color: #fff; position:absolute; bottom:-15em; width:100%; height:auto;">
+							<h3>Accept the collaboration invite (check the email)</h3>
+						</div>
+					</section>
+
+					<!-- Clone, create a new branch-->
+					<section>
+						<h3>Clone, feature branch and modify</h3>
+						<pre><code  class="bash" data-trim style="font-size: 15px; line-height: 1.1;">
+							$ git clone "repo URL" # clone the repo that was shared with you
+						</code></pre>
+						<pre><code  class="bash" data-trim style="font-size: 15px; line-height: 1.1;">
+							$ git branch plot1d # create a new branch with an appropriate name
+						</code></pre>
+						<pre><code  class="bash" data-trim style="font-size: 15px; line-height: 1.1;">
+							$ git switch plot1d # switch to the new branch
+						</code></pre>
+						<a>
+							<img style="background: rgba(187, 179, 179, 0.1);" width=auto height="350" data-src="./resources/git_collab.gif ">
+						</a>
+					</section>
+
+					<!-- Add an example -->
+					<section>
+						<h3>Add an example</h3>
+						<pre><code  class="bash" data-trim style="font-size: 15px; line-height: 1.1;">
+							$ gedit Plot1D.py # modify the branch by adding an example
+						</code></pre>
+						<p>Copy-Paste the code below in Plot1D.py</p>
+						<pre><code data-trim data-line-numbers style="font-size: 15px; line-height: 1.1;">
+							import numpy as np
+							import matplotlib.pyplot as plt
+							
+							# Fixing random state for reproducibility
+							np.random.seed(19680801)
+							
+							dt = 0.01
+							t = np.arange(0, 30, dt)
+							nse1 = np.random.randn(len(t))                 # white noise 1
+							nse2 = np.random.randn(len(t))                 # white noise 2
+							
+							# Two signals with a coherent part at 10Hz and a random part
+							s1 = np.sin(2 * np.pi * 10 * t) + nse1
+							s2 = np.sin(2 * np.pi * 10 * t) + nse2
+							
+							fig, axs = plt.subplots(2, 1)
+							axs[0].plot(t, s1, t, s2)
+							axs[0].set_xlim(0, 2)
+							axs[0].set_xlabel('time')
+							axs[0].set_ylabel('s1 and s2')
+							axs[0].grid(True)
+							
+							cxy, f = axs[1].cohere(s1, s2, 256, 1. / dt)
+							axs[1].set_ylabel('coherence')
+							
+							fig.tight_layout()
+							plt.show()
+						</code></pre>	
+					</section>
+
+					<!-- Stage, commit and push to origin-->
+					<section>
+						<h3>Stage, commit and push to origin</h3>
+						<pre><code  class="bash" data-trim style="font-size: 15px; line-height: 1.1;">
+							$ git add Plot1D.py # stage changes
+						</code></pre>
+						<pre><code  class="bash" data-trim style="font-size: 15px; line-height: 1.1;">
+							$ git commit -m  "adding Plot1D.py to branch plot1d" # commit changes to plot1d branch
+						</code></pre>
+						<pre><code  class="bash" data-trim style="font-size: 15px; line-height: 1.1;">
+							$ git push origin plot1d # push plot1d branch to origin (i.e. to github)
+						</code></pre>
+						<a>
+							<img style="background: rgba(187, 179, 179, 0.1);" width=auto height="350" data-src="./resources/git_collab_1.gif ">
+						</a>
+					</section>
+
+					<!-- create a pull request on github -->
+					<section data-background-video="./resources/create_pull_request_collab_crop.webm" data-background-video-loop="loop">
+						<div style="background-color: rgba(0, 0, 0, 0.5); color: #fff; position:absolute; bottom:-15em; width:100%; height:auto;">
+							<h3>Create a pull request on github as the invited user</h3>
+						</div>
+					</section>
+
+					<!-- Merge the pull request -->
+					<section data-background-video="./resources/accept_pull_request_collab.webm" data-background-video-loop="loop">
+						<div style="background-color: rgba(0, 0, 0, 0.5); color: #fff; position:absolute; bottom:-15em; width:100%; height:auto;">
+							<h3>Accept pull request (as owner or as collaborator)</h3>
+						</div>
+					</section>
+
+				</section>
 				
 
 
