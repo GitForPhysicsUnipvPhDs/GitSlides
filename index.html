@@ -38,6 +38,8 @@
 					</a>
 					<h3>An introduction to version control with Git</h3>
 					<h4>(Press ? for the slides keyboard shortcuts)</h4>
+					<a href="https://guides.github.com/introduction/flow/">https://gitforphysicsunipvphds.github.io/GitSlides/</a>
+					<!-- <a href="https://guides.github.com/introduction/flow/">the github flow</a> -->
 				</section>
 
 
@@ -236,7 +238,7 @@
 						<h4>and stage and commit again</h4>
 						<pre><code data-trim data-line-numbers style="font-size: 18px; line-height: 1.1;">
 							n_points = 500
-							Z = np.sin(0.75*R)
+							Z = np.sin(R)
 							surf = ax.plot_surface(X, Y, Z, cmap='viridis',linewidth=0, antialiased=True)
 						</code></pre>
 						<a>
@@ -263,13 +265,13 @@
 					<section>
 						<h2>Creating a new branch</h2>
 						<p style="font-size: 30px; line-height: 1.1;">A branch is a new ramification of your code, where you might try out new features, without affecting your original code.</p>
-						<pre><code data-trim style="font-size: 18px; line-height: 1.1;">
+						<pre><code class="bash" data-trim style="font-size: 18px; line-height: 1.1;">
 							$ git branch develop # create a new branch whose name is develop
 						</code></pre>
-						<pre><code data-trim style="font-size: 18px; line-height: 1.1;">
+						<pre><code class="bash"  data-trim style="font-size: 18px; line-height: 1.1;">
 							$ git checkout develop # move to the new branch
 						</code></pre>
-						<pre><code data-trim style="font-size: 18px; line-height: 1.1;">
+						<pre><code class="bash" data-trim style="font-size: 18px; line-height: 1.1;">
 							$ gedit Plot2D.py # create a new file inside the new branch
 						</code></pre>
 						<a>
@@ -517,7 +519,171 @@
 					</section>
 
 				</section>
+
+
+
+				<!-- Fork and pull request flow -->
+				<section>
+
+					<!-- Collaborating using the fork and pull request flow -->
+					<section>
+						<h2>Collaborating using <a href="https://reflectoring.io/github-fork-and-pull/">the forking flow</a></h2>
+						<p>When you want to contribute to a large project, or simply you do not have direct access to the repository</p>
+					</section>
+					
+					<!-- Add a collaborator to your repo -->
+					<section data-background-video="./resources/git_fork.webm" data-background-video-loop="loop">
+						<div style="background-color: rgba(0, 0, 0, 0.5); color: #fff; position:absolute; bottom:-15em; width:100%; height:auto;">
+							<h3>First of all, let's fork the target repository</h3>
+						</div>
+					</section>
+
+					<!-- Clone and  create a new branch-->
+					<section>
+						<h3>Clone and add feature branch</h3>
+						<pre><code  class="bash" data-trim style="font-size: 15px; line-height: 1.1;">
+							$ git clone https://github.com/gevero/PythonicCrystal.git # clone the FORKED REPO
+						</code></pre>
+						<pre><code  class="bash" data-trim style="font-size: 15px; line-height: 1.1;">
+							$ git branch fork_contrib # create a new branch with an appropriate name
+						</code></pre>
+						<pre><code  class="bash" data-trim style="font-size: 15px; line-height: 1.1;">
+							$ git switch fork_contrib # switch to the new branch
+						</code></pre>
+						<a>
+							<img style="background: rgba(187, 179, 179, 0.1);" width=auto height="350" data-src="./resources/git_clone_fork.gif ">
+						</a>
+					</section>
+
+					<!-- Add an example, stage, commit  and push to origin -->
+					<section>
+						<h3>Add an example, stage, commit  and push to origin</h3>
+						<p>Choose a filename such as <b>script_FamilyName.py</b> </p>
+						<pre><code  class="bash" data-trim style="font-size: 15px; line-height: 1.1;">
+							$ git add script_FamilyName.py # stage changes
+						</code></pre>
+						<pre><code  class="bash" data-trim style="font-size: 15px; line-height: 1.1;">
+							$ git commit -m  "adding script_FamilyName.py to branch fork_contrib" # commit changes to fork_contrib branch
+						</code></pre>
+						<pre><code  class="bash" data-trim style="font-size: 15px; line-height: 1.1;">
+							$ git push origin fork_contrib # push fork_contrib branch to FORKED REPO
+						</code></pre>
+						<a>
+							<img style="background: rgba(187, 179, 179, 0.1);" width=auto height="350" data-src="./resources/git_modify_fork.gif ">
+						</a>
+					</section>
+
+					<!-- Perform pull request -->
+					<section data-background-video="./resources/git_fork_pullrequest.webm" data-background-video-loop="loop">
+						<div style="background-color: rgba(0, 0, 0, 0.5); color: #fff; position:absolute; bottom:-15em; width:100%; height:auto;">
+							<h3>Perform the pull request from the forked repository to the original one</h3>
+						</div>
+					</section>
+
+					<!-- Accept pull request -->
+					<section data-background-video="./resources/git_fork_accept_pullrequest.webm" data-background-video-loop="loop">
+						<div style="background-color: rgba(0, 0, 0, 0.5); color: #fff; position:absolute; bottom:-15em; width:100%; height:auto;">
+							<h3>Pull request from forked repositories are accepted in the main repo.</h3>
+						</div>
+					</section>
+
+				</section>
+
+
+
+				<!-- Tips and tricks -->
+				<section>
+
+					<!-- Tips and tricks -->
+					<section>
+						<h2>tips and tricks</h2>
+					</section>
+
+					<!-- gitignore -->
+					<section>
+						<h2>use a .gitignore file</h2>
+						<pre><code class=sh data-trim data-line-numbers style="font-size: 15px; line-height: 1.1;">
+							# Notebook checkpoints
+							.ipynb_checkpoints/
+
+							# Byte-compiled / optimized / DLL files
+							__pycache__/
+							*.py[cod]
+							
+							# C extensions
+							*.so
+							
+							# Distribution / packaging
+							bin/
+							build/
+							develop-eggs/
+							dist/
+							eggs/
+							lib/
+							lib64/
+							parts/
+							sdist/
+							var/
+							*.egg-info/
+							.installed.cfg
+							*.egg
+							
+							# Installer logs
+							pip-log.txt
+							pip-delete-this-directory.txt
+							
+							# Unit test / coverage reports
+							.tox/
+							.coverage
+							.cache
+							nosetests.xml
+							coverage.xml
+							
+							# Translations
+							*.mo
+							
+							# Mr Developer
+							.mr.developer.cfg
+							.project
+							.pydevproject
+							
+							# Rope
+							.ropeproject
+							
+							# Django stuff:
+							*.log
+							*.pot
+						</code></pre>
+					</section>
+
+					<!-- Add an upstream repo to your forked repo -->
+					<section>
+						<h2>Add an upstream to a forked repo</h2>
+						<pre><code  class="bash" data-trim style="font-size: 15px; line-height: 1.1;">
+							$ git remote add upstream https://github.com/GitForPhysicsUnipvPhDs/PythonicCrystal.git # original repo as UPSTREAM
+						</code></pre>
+						<pre><code  class="bash" data-trim style="font-size: 15px; line-height: 1.1;">
+							$ git pull upstream
+						</code></pre>
+						<pre><code  class="bash" data-trim style="font-size: 15px; line-height: 1.1;">
+							$ git fetch upstream && git merge upstream
+						</code></pre>
+						<a>
+							<img style="background: rgba(187, 179, 179, 0.1);" width=auto height="350" data-src="./resources/git_upstream.gif ">
+						</a>
+					</section>
+
+				</section>
 				
+
+
+				<!-- Final Slide -->
+				<section>
+					<a>
+						<img src="./resources/Octocat.png" alt="reveal.js logo" style="height: 500px; margin: 0 auto 4rem auto; background: transparent;" class="demo-logo">
+					</a>
+					<h3>This is it</h3>
+				</section>
 
 
 
