@@ -37,7 +37,7 @@
 						<img src="./resources/Git-Logo-White.png" alt="reveal.js logo" style="height: 180px; margin: 0 auto 4rem auto; background: transparent;" class="demo-logo">
 					</a>
 					<h3>An introduction to version control with Git</h3>
-					<h4>(Press ? for the slides keyboard shortcuts)</h4>
+					<p>(Press ? for the slides keyboard shortcuts)</p>
 					<a href="https://unipvphysicslectures.github.io/GitTutorialSlides/">https://unipvphysicslectures.github.io/GitTutorialSlides/</a>
 				</section>
 
@@ -45,6 +45,12 @@
 
 				<!-- What is version control? -->
 				<section>
+
+					<!-- software version control -->
+					<section>
+						<h1> Software version control</h1>
+					</section>
+
 					<!-- What is version control? -->
 					<section>
 						<h2>What is version control?</h2>
@@ -79,69 +85,126 @@
 
 
 
-				<!-- What is version control? -->
-				<section data-background="./resources/github_landing.png">
-					<div style="position: absolute; width: 40%; right: 0; box-shadow: 0 1px 4px rgba(0,0,0,0.5), 0 5px 25px rgba(0,0,0,0.2); background-color: rgba(0, 0, 0, 0.9); color: #fff; padding: 20px; font-size: 20px; text-align: left;">
-						<h2>Let's get to work</h2>
-						<ul>
-							<li>Create and account on github.</li>
-							<li>Don't worry about github now. We'll explain later.</li>
-							<li>Do not forget username and password.</li>
-							<li>And back to git.</li>
-						</ul>
-					</div>
-				</section>
-
-
-
-				<!-- Initialize Git -->
-				<section>
-					<h2>Initializing git</h2>
-					<pre><code class="bash" data-trim>
-						$ git config --global user.name "YOUR_USERNAME" # the github one
-					</code></pre>
-					<pre><code class="bash" data-trim>
-						$ git config --global user.email "john.doe@unipv.it"
-					</code></pre>
-					<pre><code class="bash" data-trim>
-						$ git config --global --list # to check that we did it right
-					</code></pre>
-					<a>
-						<img style="background: rgba(255,255,255,0.1);" width=auto height="350" data-src="./resources/git_config.gif">
-					</a>
-				</section>
-
-
-
-				<!-- Initialize first repository -->
-				<section>
-					<h2>Initializing our first repository</h2>
-					<pre><code class="bash" data-trim>
-						$ mkdir GitTutorial # create folder
-					</code></pre>
-					<pre><code class="bash" data-trim>
-						$ cd GitTutorial # move into folder
-					</code></pre>
-					<pre><code class="bash" data-trim>
-						$ git init # initialize repository
-					</code></pre>
-					<pre><code class="bash" data-trim>
-						$ ls -a # check if .git hidden folder has been created
-					</code></pre>
-					<a>
-						<img style="background: rgba(187, 179, 179, 0.1);" width=auto height="320" data-src="./resources/git_initialize.gif">
-					</a>
-				</section>
-
-
-
-				<!-- Commit your first file -->
+				<!-- Setting up github -->
 				<section>
 
-					<!-- Let's create a simple 3D plot -->
+					<!-- setting up github -->
 					<section>
-						<h2>Stage and commit your first file</h2>
-						<h3>Let's create a simple 3D plot</h3>
+						<h1>Setting up github</h1>
+					</section>
+
+					<!-- create github account -->
+					<section data-background="./resources/github_landing.png">
+						<div style="position: absolute; width: 40%; right: 0; box-shadow: 0 1px 4px rgba(255,255,255,0.0), 0 5px 25px rgba(0,0,0,0.2); background-color: rgba(255,255,255,1); color: #fff; padding: 20px; font-size: 20px; text-align: left;">
+							<h2 style="color: black;">Let's get to work</h2>
+							<ul style="color: black;">
+								<li>Create and account on github.</li>
+								<li>Don't worry about github now. We'll explain later.</li>
+								<li>Do not forget username and password.</li>
+								<li>We also need to create an authentication token	.</li>
+							</ul>
+						</div>
+					</section>
+
+					<!-- create a personal token to use as password -->
+					<section data-background="./resources/token1.png">
+						<div style="background-color: rgba(255, 255, 255, 1); color: #fff; position:absolute; bottom:-15em; width:100%; height:auto;">
+							<p class="r-fit-text" style="color: black;">Create a personal token to be used as a password between git and github</p>
+							<p><a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token">➡ How to create a personal token ⬅</a></p>
+						</div>
+					</section>
+
+				</section>
+				
+
+
+				<!-- Our Folder Structure -->
+				<section>
+
+					<!-- git setup -->
+					<section>
+						<h1>Setting up git</h1>
+					</section>
+
+					<!-- Initialize Git -->
+					<section>
+						<h2>Initializing git</h2>
+						<pre><code class="bash" data-trim>
+							$ git config --global user.name "YOUR_USERNAME" # the github one
+						</code></pre>
+						<pre><code class="bash" data-trim>
+							$ git config --global user.email "john.doe@unipv.it"
+						</code></pre>
+						<pre><code class="bash" data-trim>
+							$ git config --global --list # to check that we did it right
+						</code></pre>
+						<a>
+							<img style="background: rgba(255,255,255,0.1);" width=auto height="350" data-src="./resources/git_config.gif">
+						</a>
+					</section>
+
+					<!-- beginning folder structure -->
+					<section>
+						<h2>Our Folder Structure at the beginning</h2>
+						<pre><code class="bash" data-trim>
+							GitLecture/
+								├── ContribRepos
+								└── MyRepos
+						</code></pre>
+						<p>Create this folder structure in your home folder, and then go back to it</p>
+					</section>
+					
+					<!-- end folder structure -->
+					<section>
+						<h2 class="r-fit-text">Our Folder Structure at the end</h2>
+						<pre><code class="bash" data-trim>
+							GitLecture/
+								├── ContribRepos
+								│   ├── GitTutorial
+								│   └── PythonicCrystal
+								└── MyRepos
+								    └── GitTutorial
+						</code></pre>
+						<p>This will be the folder structure after we create and contribute to all the relevant git repositories during the lecture</p>
+					</section>
+
+				</section>
+
+
+				<section>
+
+					<!-- working locally with git -->
+					<section>
+						<h1>Working locally with git</h1>
+					</section>
+				
+					<!-- Initialize first repository -->
+					<section>
+						<h3 class="r-fit-text">Initializing our first repository</h3>
+						<pre style="font-size: 0.4em;"><code class="bash" data-trim>
+							$ cd GitLecture # go to lecture root folder
+						</code></pre>
+						<pre style="font-size: 0.4em;"><code class="bash" data-trim>
+							$ mkdir GitTutorial # create folder
+						</code></pre>
+						<pre style="font-size: 0.4em;"><code class="bash" data-trim>
+							$ cd GitTutorial # move into folder
+						</code></pre>
+						<pre style="font-size: 0.4em;"><code class="bash" data-trim>
+							$ git init # initialize repository
+						</code></pre>
+						<pre style="font-size: 0.4em;"><code class="bash" data-trim>
+							$ ls -a # check if .git hidden folder has been created
+						</code></pre>
+						<a>
+							<img style="background: rgba(187, 179, 179, 0.1);" width=auto height="320" data-src="./resources/git_initialize.gif">
+						</a>
+					</section>
+
+					<!-- Stage and commit your first file -->
+					<section>
+						<h2 class="r-fit-text">Stage and commit your first file</h2>
+						<h4>Let's create a simple 3D plot</h4>
 						<a>
 							<img src="./resources/NumPy_logo_2020.svg" alt="numpy logo" style="height: 120px; margin: 0 auto 4rem auto; background: transparent;">
 							<img src="./resources/matplotlib_logo.svg" alt="matplotlib logo" style="height: 120px; margin: 0 auto 4rem auto; background: transparent;">
@@ -206,7 +269,7 @@
 
 					<!-- Stage, Status, Commit and Log -->
 					<section>
-						<h2>Stage, Status, Commit and Log</h2>
+						<h2 class="r-fit-text">Stage, Status, Commit and Log</h2>
 						<pre><code  class="bash" data-trim style="font-size: 16px; line-height: 1.1;">
 							$ git add Plot3D.py # add the file to the staging area
 						</code></pre>
@@ -224,12 +287,6 @@
 							<img style="background: rgba(187, 179, 179, 0.1);" width=auto height="320" data-src="./resources/git_commit.gif">
 						</a>
 					</section>
-				</section>
-
-
-
-				<!-- Modify the code -->
-				<section>
 
 					<!-- Modify the code -->
 					<section>
@@ -253,12 +310,6 @@
 							<img style="background: rgba(187, 179, 179, 0.1);" width=auto height="350" data-src="./resources/git_diff.gif">
 						</a>
 					</section>
-				</section>
-				
-
-
-				<!-- Using Branches -->
-				<section>
 
 					<!-- Create a new branch, switch to it, and create a new plot -->
 					<section>
@@ -328,7 +379,7 @@
 
 					<!-- Stage and commit changes in develop -->
 					<section>
-						<h3>Stage and commit changes in develop branch</h3>
+						<h3 class="r-fit-text">Stage and commit changes in develop branch</h3>
 						<pre><code  class="bash" data-trim style="font-size: 18px; line-height: 1.1;">
 							$ git add Plot2D.py # stage the changes
 						</code></pre>
@@ -341,31 +392,36 @@
 						</a>
 					</section>
 
+					<!-- Merging branches -->
+					<section>
+						<h2>Git Merge</h2>
+						<h4 class="r-fit-text">Merging changes between branches ➔ Let's merge develop into master</h4>
+						<h4></h4>
+						<pre><code  class="bash" data-trim style="font-size: 18px; line-height: 1.1;">
+							$ git checkout master # move to the RECEIVING branch
+						</code></pre>
+						<pre><code  class="bash" data-trim style="font-size: 18px; line-height: 1.1;">
+							$ git merge develop # merge develop into master
+						</code></pre>
+						<pre><code  class="bash" data-trim style="font-size: 18px; line-height: 1.1;">
+							$ git log # let's see what happened
+						</code></pre>
+						<a>
+							<img style="background: rgba(187, 179, 179, 0.1);" width=auto height="320" data-src="./resources/git_merge.gif">
+						</a>
+					</section>
+
 				</section>
-
-
-				<!-- Merging branches -->
-				<section>
-					<h2>Git Merge</h2>
-					<h4>Merging changes between branches ➔ Let's merge develop into master</h4>
-					<h4></h4>
-					<pre><code  class="bash" data-trim style="font-size: 18px; line-height: 1.1;">
-						$ git checkout master # move to the RECEIVING branch
-					</code></pre>
-					<pre><code  class="bash" data-trim style="font-size: 18px; line-height: 1.1;">
-						$ git merge develop # merge develop into master
-					</code></pre>
-					<pre><code  class="bash" data-trim style="font-size: 18px; line-height: 1.1;">
-						$ git log # let's see what happened
-					</code></pre>
-					<a>
-						<img style="background: rgba(187, 179, 179, 0.1);" width=auto height="320" data-src="./resources/git_merge.gif">
-					</a>
-				</section>
-
+				
 
 				<!-- Creating a new repo on github -->
 				<section>
+
+					<!-- git and remote repositories -->
+					<section>
+						<h1 class="r-fit-text">git and remote repos</h1>
+						<h4>Working with git and github<h4>
+					</section>
 
 					<!-- Create a new repository on github -->
 					<section data-background-video="./resources/create_repo.webm" data-background-video-loop="loop">
@@ -377,18 +433,18 @@
 
 					<!-- Add remote repository and push to repo -->
 					<section>
-						<h3>Add the remote repo and push the code to github</h3>
+						<h3 class="r-fit-text">Add the remote repo and push the code to github</h3>
 						<pre><code  class="bash" data-trim style="font-size: 15px; line-height: 1.1;">
 							$ git checkout master # go to master branch
 						</code></pre>
 						<pre><code  class="bash" data-trim style="font-size: 15px; line-height: 1.1;">
-							$ git remote add origin https://github.com/GitForPhysicsUnipvPhDs/GitTutorial.git # add remote repo
+							$ git remote add origin https://github.com/YourUsername/GitTutorial.git # add your remote repo
 						</code></pre>
 						<pre><code  class="bash" data-trim style="font-size: 15px; line-height: 1.1;">
 							$ git branch -M main # change master branch name to main (new github standard)
 						</code></pre>
 						<pre><code  class="bash" data-trim style="font-size: 15px; line-height: 1.1;">
-							$ git push -u origin main
+							$ git push -u origin main # push your local repo (main) to the remote one (origin)
 						</code></pre>
 						<a>
 							<img style="background: rgba(187, 179, 179, 0.1);" width=auto height="350" data-src="./resources/git_push.gif">
@@ -409,9 +465,14 @@
 				<!-- Collaborate using github flow	-->
 				<section>
 
+					<!-- Collaborating on a shared remote github repo -->
+					<section>
+						<h1>Collaborating on a shared remote github repo</h1>
+					</section>
+
 					<!-- Collaborating using the github flow -->
 					<section>
-						<h2>Collaborating using <a href="https://guides.github.com/introduction/flow/">the github flow</a></h2>
+						<h2 class="r-fit-text">Collaborating using <a href="https://guides.github.com/introduction/flow/">the github flow</a></h2>
 						<a>
 							<img src="./resources/githubflow-online.png" alt="reveal.js logo" style="height: 14em; margin: 0 auto 4rem auto; background: transparent;" class="demo-logo">
 						</a>
@@ -433,18 +494,26 @@
 
 					<!-- Clone, create a new branch-->
 					<section>
-						<h3>Clone, feature branch and modify</h3>
-						<pre><code  class="bash" data-trim style="font-size: 15px; line-height: 1.1;">
+
+						<h3>Back on your computer</h3>
+						<h4>Clone, feature branch and modify</h4>
+						<pre style="font-size: 0.3em;"><code  class="bash" data-trim style="line-height: 0.75;">
+							$ cd ~/GitLecture/ContribRepos # go to the ContribRepos folder
+						</code></pre>
+						<pre style="font-size: 0.3em;"><code  class="bash" data-trim style="line-height: 0.75;">
 							$ git clone "repo URL" # clone the repo that was shared with you
 						</code></pre>
-						<pre><code  class="bash" data-trim style="font-size: 15px; line-height: 1.1;">
+						<pre style="font-size: 0.3em;"><code  class="bash" data-trim style="line-height: 0.75;">
+							$ cd "repo Folder" # go to repo folder (it should be GitTutorial)
+						</code></pre>
+						<pre style="font-size: 0.3em;"><code  class="bash" data-trim style="line-height: 0.75;">
 							$ git branch plot1d # create a new branch with an appropriate name
 						</code></pre>
-						<pre><code  class="bash" data-trim style="font-size: 15px; line-height: 1.1;">
+						<pre style="font-size: 0.3em;"><code  class="bash" data-trim style="line-height: 0.75;">
 							$ git switch plot1d # switch to the new branch
 						</code></pre>
 						<a>
-							<img style="background: rgba(187, 179, 179, 0.1);" width=auto height="350" data-src="./resources/git_collab.gif ">
+							<img style="background: rgba(187, 179, 179, 0.1);" width=auto height="320" data-src="./resources/git_collab.gif ">
 						</a>
 					</section>
 
@@ -524,9 +593,14 @@
 				<!-- Fork and pull request flow -->
 				<section>
 
+					<!-- Collaborating on github projects you do not own -->
+					<section>
+						<h1>Collaborating on large github projects</h1>
+					</section>
+
 					<!-- Collaborating using the fork and pull request flow -->
 					<section>
-						<h2>Collaborating using <a href="https://reflectoring.io/github-fork-and-pull/">the forking flow</a></h2>
+						<h2 class="r-fit-text">Collaborating using <a href="https://reflectoring.io/github-fork-and-pull/">the forking flow</a></h2>
 						<p>When you want to contribute to a large project, or simply you do not have direct access to the repository</p>
 					</section>
 					
@@ -540,13 +614,19 @@
 					<!-- Clone and  create a new branch-->
 					<section>
 						<h3>Clone and add feature branch</h3>
-						<pre><code  class="bash" data-trim style="font-size: 15px; line-height: 1.1;">
-							$ git clone https://github.com/gevero/PythonicCrystal.git # clone the FORKED REPO
+						<pre style="font-size: 0.3em;"><code  class="bash" data-trim style="line-height: 0.75;">
+							$ cd ~/GitLecture/ContribRepos # go to the ContribRepos folder
 						</code></pre>
-						<pre><code  class="bash" data-trim style="font-size: 15px; line-height: 1.1;">
+						<pre style="font-size: 0.3em;"><code  class="bash" data-trim style="line-height: 0.75;">
+							$ git clone https://github.com/YourUsername/PythonicCrystal.git # clone your FORKED REPO
+						</code></pre>
+						<pre style="font-size: 0.3em;"><code  class="bash" data-trim style="line-height: 0.75;">
+							$ cd PythonicCrystal # go to the FORKED REPO folder
+						</code></pre>
+						<pre style="font-size: 0.3em;"><code  class="bash" data-trim style="line-height: 0.75;">
 							$ git branch fork_contrib # create a new branch with an appropriate name
 						</code></pre>
-						<pre><code  class="bash" data-trim style="font-size: 15px; line-height: 1.1;">
+						<pre style="font-size: 0.3em;"><code  class="bash" data-trim style="line-height: 0.75;">
 							$ git switch fork_contrib # switch to the new branch
 						</code></pre>
 						<a>
@@ -556,7 +636,7 @@
 
 					<!-- Add an example, stage, commit  and push to origin -->
 					<section>
-						<h3>Add an example, stage, commit  and push to origin</h3>
+						<h3 class="r-fit-text">Add an example, stage, commit  and push to origin</h3>
 						<p>Choose a filename such as <b>script_FamilyName.py</b> </p>
 						<pre><code  class="bash" data-trim style="font-size: 15px; line-height: 1.1;">
 							$ git add script_FamilyName.py # stage changes
@@ -595,7 +675,7 @@
 
 					<!-- Tips and tricks -->
 					<section>
-						<h2>tips and tricks</h2>
+						<h1>tips and tricks</h1>
 					</section>
 
 					<!-- gitignore -->
@@ -655,9 +735,27 @@
 						</code></pre>
 					</section>
 
+					<!-- Going back in time: 1 -->
+					<section>
+						<h2 class="r-fit-text">Going back in time: 1</h2>
+						<h4>jump to an old commit</h4>
+						<pre><code  class="bash" data-trim style="font-size: 15px; line-height: 1.1;">
+							$ git checkout "old commit hash" # you find the commit hash with "git log"
+						</code></pre>
+					</section>
+
+					<!-- Going back in time -->
+					<section>
+						<h2 class="r-fit-text">Going back in time: 2</h2>
+						<h4>Reset the repo to an old commit (and delete all the new commits up to a point)</h4>
+						<pre><code  class="bash" data-trim style="font-size: 15px; line-height: 1.1;">
+							$ git reset --hard "old commit hash" # you find the commit hash with "git log"
+						</code></pre>
+					</section>
+
 					<!-- Add an upstream repo to your forked repo -->
 					<section>
-						<h2>Add an upstream to a forked repo</h2>
+						<h2 class="r-fit-text">Add an upstream to a forked repo</h2>
 						<pre><code  class="bash" data-trim style="font-size: 15px; line-height: 1.1;">
 							$ git remote add upstream https://github.com/GitForPhysicsUnipvPhDs/PythonicCrystal.git # original repo as UPSTREAM
 						</code></pre>
@@ -684,7 +782,7 @@
 					<section>
 						<h2>These slides are a git repo</h2>
 						<pre><code  class="bash" data-trim style="font-size: 15px; line-height: 1.1;">
-							$ git clone https://github.com/GitForPhysicsUnipvPhDs/GitSlides.git # clone the repository
+							$ git clone https://github.com/UnipvPhysicsLectures/GitTutorialSlides.git # clone the repository
 						</code></pre>
 						<pre><code  class="bash" data-trim style="font-size: 15px; line-height: 1.1;">
 							$ cd GitSlides # move to repository folder
