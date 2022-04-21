@@ -1,0 +1,884 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>reveal.js – The HTML Presentation Framework</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/league.css" id="theme">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				
+
+
+				<!-- Introduction Slide -->
+				<section>
+					<a>
+						<img src="./resources/Git-Logo-White.png" alt="reveal.js logo" style="height: 180px; margin: 0 auto 4rem auto; background: transparent;" class="demo-logo">
+					</a>
+					<h4>An introduction to version control with Git and Github</h4>
+				</section>
+
+
+
+				<!-- What is version control? -->
+				<section>
+					<!-- What is version control? -->
+					<section>
+						<h2>What is version control?</h2>
+						<blockquote cite="https://www.freecodecamp.org/news/learn-the-basics-of-git-in-under-10-minutes-da548267cc91/">
+							&ldquo;Version control is a system that records changes to a file or set of files over time so that you can recall specific versions later.&rdquo;
+						</blockquote>
+						<blockquote cite="https://www.freecodecamp.org/news/learn-the-basics-of-git-in-under-10-minutes-da548267cc91/">
+							&ldquo;Git is a version-control system for tracking changes in computer files and coordinating work on those files among multiple people. &rdquo;
+						</blockquote>
+					</section>
+
+					<!-- A typical first scenario -->
+					<section>
+						<h2>A first typical scenario</h2>
+						<p class="fragment">You write a software that actually works...</p>
+						<p class="fragment">...you modify it to add new features...</p>
+						<p class="fragment">...it does not work anymore...</p>
+						<p class="fragment">... and you don't know how to get back to the original version.</p>
+					</section>
+
+					<!-- A typical second scenario -->
+					<section>
+						<h2>A second typical scenario</h2>
+						<p class="fragment">You write a software together with your colleagues and...</p>
+						<p class="fragment">You cannot keep track of all the changes.</p>
+						<p class="fragment">Who modified the software?</p>
+						<p class="fragment">Where are the changes?</p>
+						<p class="fragment">And above all, why did he do it?</p>
+
+					</section>
+				</section>
+
+
+
+				<!-- What is version control? -->
+				<section data-background="./resources/github_landing.png">
+					<div style="position: absolute; width: 40%; right: 0; box-shadow: 0 1px 4px rgba(0,0,0,0.5), 0 5px 25px rgba(0,0,0,0.2); background-color: rgba(0, 0, 0, 0.9); color: #fff; padding: 20px; font-size: 20px; text-align: left;">
+						<h2>Let's get to work</h2>
+						<ul>
+							<li>Create and account on github.</li>
+							<li>Don't worry about github now. We'll explain later.</li>
+							<li>Do not forget username and password.</li>
+							<li>And back to git.</li>
+						</ul>
+					</div>
+				</section>
+
+
+
+				<!-- Initialize Git -->
+				<section>
+					<h2>Initializing git</h2>
+					<pre><code class="bash" data-trim>
+						$ git config --global user.name "YOUR_USERNAME" # the github one
+					</code></pre>
+					<pre><code class="bash" data-trim>
+						$ git config --global user.email "john.doe@unipv.it"
+					</code></pre>
+					<pre><code class="bash" data-trim>
+						$ git config --global --list # to check that we did it right
+					</code></pre>
+					<a>
+						<img class="r-frame" style="background: rgba(255,255,255,0.1);" width=auto height="350" data-src="./resources/git_config.gif">
+					</a>
+				</section>
+
+
+
+				<!-- Initialize first repository -->
+				<section>
+					<h2>Initializing our first repository</h2>
+					<pre><code class="bash" data-trim>
+						$ mkdir GitTutorial # create folder
+					</code></pre>
+					<pre><code class="bash" data-trim>
+						$ cd GitTutorial # move into folder
+					</code></pre>
+					<pre><code class="bash" data-trim>
+						$ git init # initialize repository
+					</code></pre>
+					<pre><code class="bash" data-trim>
+						$ ls -a # check if .git hidden folder has been created
+					</code></pre>
+					<a>
+						<img class="r-frame" style="background: rgba(187, 179, 179, 0.1);" width=auto height="320" data-src="./resources/git_initialize.gif">
+					</a>
+				</section>
+
+
+
+				<!-- Commit your first file -->
+				<section>
+
+					<!-- Let's create a simple 3D plot -->
+					<section>
+						<h2>Stage and commit your first file</h2>
+						<h3>Let's create a simple 3D plot</h3>
+						<a>
+							<img src="./resources/NumPy_logo_2020.svg" alt="numpy logo" style="height: 120px; margin: 0 auto 4rem auto; background: transparent;">
+							<img src="./resources/matplotlib_logo.svg" alt="matplotlib logo" style="height: 120px; margin: 0 auto 4rem auto; background: transparent;">
+						</a>
+						<pre><code class="bash" data-trim>
+							$ gedit Plot3D.py # from inside the GitTutorial folder
+						</code></pre>
+					</section>
+
+					<!-- Code for the 3d plot -->
+					<section>
+						<p>Copy-Paste the code below in Plot3D.py</p>
+						<pre><code data-trim data-line-numbers style="font-size: 15px; line-height: 1.1;">
+							# import plot libraries libraries
+							from mpl_toolkits.mplot3d import Axes3D
+							import matplotlib.pyplot as plt
+							# import numpy linear algebra library
+							import numpy as np
+	
+							# create figure and set it to 3d projection
+							fig = plt.figure()
+							ax = fig.gca(projection='3d')
+	
+							# 1D arrays for x and y coordinates
+							n_points = 200
+							x_min,x_max = -5,5
+							y_min,y_max = -5,5
+							X = np.linspace(x_min,x_max, n_points)
+							Y = np.linspace(y_min,y_max, n_points)
+	
+							# 2D X,Y grids from 1D arrays
+							X, Y = np.meshgrid(X, Y)
+	
+							# Z 2D grid for the plot
+							R = np.sqrt(X**2 + Y**2)
+							Z = np.sin(R)
+	
+							# plot the surface.
+							surf = ax.plot_surface(X, Y, Z, cmap='magma',linewidth=0, antialiased=True)
+	
+							# Customize the z axis.
+							ax.set_zlim(-1.01, 1.01)
+	
+							# Add a color bar
+							fig.colorbar(surf, shrink=0.5, aspect=5)
+	
+							# plot
+							plt.show()
+						</code></pre>	
+					</section>
+
+					<!-- Run the script and see the plot -->
+					<section>
+						<p>Close the file and run the code</p>
+						<pre><code  class="bash" data-trim>
+							$ python Plot3D.py
+						</code></pre>
+						<a>
+							<img src="./resources/Plot3D.png" alt="plot 3d" style="height: 450px; margin: 0 auto 4rem auto; background: transparent;">
+						</a>
+					</section>
+
+					<!-- Stage, Status, Commit and Log -->
+					<section>
+						<h2>Stage, Status, Commit and Log</h2>
+						<pre><code  class="bash" data-trim style="font-size: 16px; line-height: 1.1;">
+							$ git add Plot3D.py # add the file to the staging area
+						</code></pre>
+						<pre><code  class="bash" data-trim style="font-size: 15px; line-height: 1.1;">
+							$ git status # check the repository status
+						</code></pre>
+						<pre><code  class="bash" data-trim style="font-size: 15px; line-height: 1.1;">
+							$ git commit -m "this is my first commit" # always include a meaningful commit message
+						</code></pre>
+
+						<pre><code  class="bash" data-trim style="font-size: 15px; line-height: 1.1;">
+							$ git log # see the commit history
+						</code></pre>
+						<a>
+							<img style="background: rgba(187, 179, 179, 0.1);" width=auto height="320" data-src="./resources/git_commit.gif">
+						</a>
+					</section>
+				</section>
+
+
+
+				<!-- Modify the code -->
+				<section>
+
+					<!-- Modify the code -->
+					<section>
+						<h2>Let's modify the code</h2>
+						<h4>and stage and commit again</h4>
+						<pre><code data-trim data-line-numbers style="font-size: 18px; line-height: 1.1;">
+							n_points = 500
+							Z = np.sin(0.75*R)
+							surf = ax.plot_surface(X, Y, Z, cmap='viridis',linewidth=0, antialiased=True)
+						</code></pre>
+						<a>
+							<img style="background: rgba(187, 179, 179, 0.1);" width=auto height="320" data-src="./resources/git_commit_2.gif">
+						</a>
+					</section>
+
+					<!-- run git diff -->
+					<section>
+						<h2>Seeing the modifications</h2>
+						<h3>git diff</h3>
+						<a>
+							<img style="background: rgba(187, 179, 179, 0.1);" width=auto height="350" data-src="./resources/git_diff.gif">
+						</a>
+					</section>
+				</section>
+				
+
+
+				<!-- Using Branches -->
+				<section>
+
+					<!-- Create a new branch, switch to it, and create a new plot -->
+					<section>
+						<h2>Creating a new branch</h2>
+						<p style="font-size: 30px; line-height: 1.1;">A branch is a new ramification of your code, where you might try out new features, without affecting your original code.</p>
+						<pre><code data-trim style="font-size: 18px; line-height: 1.1;">
+							$ git branch develop # create a new branch whose name is develop
+						</code></pre>
+						<pre><code data-trim style="font-size: 18px; line-height: 1.1;">
+							$ git checkout develop # move to the new branch
+						</code></pre>
+						<pre><code data-trim style="font-size: 18px; line-height: 1.1;">
+							$ gedit Plot2D.py # create a new file inside the new branch
+						</code></pre>
+						<a>
+							<img style="background: rgba(187, 179, 179, 0.1);" width=auto height="300" data-src="./resources/git_branch.gif">
+						</a>
+					</section>
+
+					<!-- Create the Plot2D.py file -->
+					<section>
+						<p>Copy-Paste the code below in Plot2D.py</p>
+						<pre><code data-trim data-line-numbers style="font-size: 15px; line-height: 1.1;">
+							# import plot libraries
+							import matplotlib.pyplot as plt
+							# import numpy linear algebra library
+							import numpy as np
+							
+							# create figure
+							fig,ax = plt.subplots()
+							
+							# 1D arrays for x and y coordinates
+							n_points = 500
+							x_min,x_max = -5,5
+							y_min,y_max = -5,5
+							X = np.linspace(x_min,x_max, n_points)
+							Y = np.linspace(y_min,y_max, n_points)
+							
+							# 2D X,Y grids from 1D arrays
+							X, Y = np.meshgrid(X, Y)
+							
+							# Z 2D grid for the plot
+							R = np.sqrt(X**2 + Y**2)
+							Z = np.cos(0.75*R)
+							
+							# plot the surface.
+							surf = ax.imshow(Z, cmap='magma',origin='lower')
+							
+							# Add a color bar
+							fig.colorbar(surf)
+							
+							# plot
+							plt.show()
+						</code></pre>	
+					</section>
+
+					<!-- Run the script and see the plot -->
+					<section>
+						<p>Close the file and run the code</p>
+						<pre><code  class="bash" data-trim>
+							$ python Plot2D.py
+						</code></pre>
+						<a>
+							<img src="./resources/Plot2D.png" alt="plot 3d" style="height: 450px; margin: 0 auto 4rem auto; background: transparent;">
+						</a>
+					</section>
+
+					<!-- Stage and commit changes in develop -->
+					<section>
+						<h3>Stage and commit changes in develop branch</h3>
+						<pre><code  class="bash" data-trim style="font-size: 18px; line-height: 1.1;">
+							$ git add Plot2D.py # stage the changes
+						</code></pre>
+						<pre><code  class="bash" data-trim style="font-size: 18px; line-height: 1.1;">
+							$ git commit -m "my first commit on develop branch" # commit the changes
+						</code></pre>
+						<p>Check the status of your repository when you move back and forth from master branch to develop branch</p>
+						<a>
+							<img style="background: rgba(187, 179, 179, 0.1);" width=auto height="350" data-src="./resources/git_develop.gif">
+						</a>
+					</section>
+
+				</section>
+
+
+				<!-- Merging branches -->
+				<section>
+					<h2>Git Merge</h2>
+					<h4>Merging changes between branches ➔ Let's merge develop into master</h4>
+					<h4></h4>
+					<pre><code  class="bash" data-trim style="font-size: 18px; line-height: 1.1;">
+						$ git checkout master # move to the RECEIVING branch
+					</code></pre>
+					<pre><code  class="bash" data-trim style="font-size: 18px; line-height: 1.1;">
+						$ git merge develop # merge develop into master
+					</code></pre>
+					<pre><code  class="bash" data-trim style="font-size: 18px; line-height: 1.1;">
+						$ git log # let's see what happened
+					</code></pre>
+					<a>
+						<img style="background: rgba(187, 179, 179, 0.1);" width=auto height="320" data-src="./resources/git_merge.gif">
+					</a>
+				</section>
+
+
+				<!-- Creating a new repo on github -->
+				<section>
+
+					<!-- Create a new repository on github -->
+					<section data-background-video="./resources/create_repo.mp4" data-background-color="#000000" data-background-video-loop="loop">
+						<div style="background-color: rgba(0, 0, 0, 0.5); color: #fff; position:fixed; bottom:0; width:100%; height:auto;">
+							<h2>Working with remote repositories</h2>
+							<h4>First we create a new repository on github</h4>
+						</div>
+					</section>
+
+					<!-- Add remote repository and push to repo -->
+					<section>
+						<h3>Add the remote repo and push the code to github</h3>
+						<pre><code  class="bash" data-trim style="font-size: 15px; line-height: 1.1;">
+							$ git checkout master # go to master branch
+						</code></pre>
+						<pre><code  class="bash" data-trim style="font-size: 15px; line-height: 1.1;">
+							$ git remote add origin https://github.com/GitForPhysicsUnipvPhDs/GitTutorial.git # add remote repo
+						</code></pre>
+						<pre><code  class="bash" data-trim style="font-size: 15px; line-height: 1.1;">
+							$ git branch -M main # change master branch name to main (new github standard)
+						</code></pre>
+						<pre><code  class="bash" data-trim style="font-size: 15px; line-height: 1.1;">
+							$ git push -u origin main
+						</code></pre>
+						<a>
+							<img style="background: rgba(187, 179, 179, 0.1);" width=auto height="350" data-src="./resources/git_push.gif">
+						</a>
+					</section>
+
+					<!-- Successful push -->
+					<section data-background-video="./resources/git_push.mp4" data-background-color="#000000" data-background-video-loop="loop">
+						<div style="background-color: rgba(0, 0, 0, 0.5); color: #fff; position:fixed; bottom:0; width:100%; height:auto;">
+							<h3>You should see this if the push was successful</h3>
+						</div>
+					</section>
+
+				</section>
+				
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+				
+
+
+
+
+
+				<!-- <section>
+					<h2>Hello There</h2>
+					<p>
+						reveal.js enables you to create beautiful interactive slide decks using HTML. This presentation will show you examples of what it can do.
+					</p>
+				</section> -->
+
+				<!-- Example of nested vertical slides -->
+				<!-- <section>
+					<section>
+						<h2>Vertical Slides</h2>
+						<p>Slides can be nested inside of each other.</p>
+						<p>Use the <em>Space</em> key to navigate through all slides.</p>
+						<br>
+						<a href="#" class="navigate-down">
+							<img class="r-frame" style="background: rgba(255,255,255,0.1);" width="178" height="238" data-src="https://static.slid.es/reveal/arrow.png" alt="Down arrow">
+						</a>
+					</section>
+					<section>
+						<h2>Basement Level 1</h2>
+						<p>Nested slides are useful for adding additional detail underneath a high level horizontal slide.</p>
+					</section>
+					<section>
+						<h2>Basement Level 2</h2>
+						<p>That's it, time to go back up.</p>
+						<br>
+						<a href="#/2">
+							<img class="r-frame" style="background: rgba(255,255,255,0.1); transform: rotate(180deg);" width="178" height="238" data-src="https://static.slid.es/reveal/arrow.png" alt="Up arrow">
+						</a>
+					</section>
+				</section>
+
+				<section>
+					<h2>Slides</h2>
+					<p>
+						Not a coder? Not a problem. There's a fully-featured visual editor for authoring these, try it out at <a href="https://slides.com" target="_blank">https://slides.com</a>.
+					</p>
+				</section>
+
+				<section data-visibility="hidden">
+					<h2>Hidden Slides</h2>
+					<p>
+						This slide is visible in the source, but hidden when the presentation is viewed. You can show all hidden slides by setting the `showHiddenSlides` config option to `true`.
+					</p>
+				</section>
+
+				<section data-auto-animate>
+					<h2 data-id="code-title">Pretty Code</h2>
+					<pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers>
+						import React, { useState } from 'react';
+
+						function Example() {
+						  const [count, setCount] = useState(0);
+
+						  return (
+						    ...
+						  );
+						}
+					</code></pre>
+					<p>Code syntax highlighting courtesy of <a href="https://highlightjs.org/usage/">highlight.js</a>.</p>
+				</section>
+
+				<section data-auto-animate>
+					<h2 data-id="code-title">With animations</h2>
+					<pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="|4,8-11|17|22-24"><script type="text/template">
+						import React, { useState } from 'react';
+
+						function Example() {
+						  const [count, setCount] = useState(0);
+
+						  return (
+						    <div>
+						      <p>You clicked {count} times</p>
+						      <button onClick={() => setCount(count + 1)}>
+						        Click me
+						      </button>
+						    </div>
+						  );
+						}
+
+						function SecondExample() {
+						  const [count, setCount] = useState(0);
+
+						  return (
+						    <div>
+						      <p>You clicked {count} times</p>
+						      <button onClick={() => setCount(count + 1)}>
+						        Click me
+						      </button>
+						    </div>
+						  );
+						}
+					</script></code></pre>
+				</section> -->
+
+				<!-- <section>
+					<h2>Point of View</h2>
+					<p>
+						Press <strong>ESC</strong> to enter the slide overview.
+					</p>
+					<p>
+						Hold down the <strong>alt</strong> key (<strong>ctrl</strong> in Linux) and click on any element to zoom towards it using <a href="http://lab.hakim.se/zoom-js">zoom.js</a>. Click again to zoom back out.
+					</p>
+					<p>
+						(NOTE: Use ctrl + click in Linux.)
+					</p>
+				</section> -->
+
+				<!-- <section data-auto-animate data-auto-animate-easing="cubic-bezier(0.770, 0.000, 0.175, 1.000)">
+					<h2>Auto-Animate</h2>
+					<p>Automatically animate matching elements across slides with <a href="https://revealjs.com/auto-animate/">Auto-Animate</a>.</p>
+					<div class="r-hstack justify-center">
+						<div data-id="box1" style="background: #999; width: 50px; height: 50px; margin: 10px; border-radius: 5px;"></div>
+						<div data-id="box2" style="background: #999; width: 50px; height: 50px; margin: 10px; border-radius: 5px;"></div>
+						<div data-id="box3" style="background: #999; width: 50px; height: 50px; margin: 10px; border-radius: 5px;"></div>
+					</div>
+				</section>
+				<section data-auto-animate data-auto-animate-easing="cubic-bezier(0.770, 0.000, 0.175, 1.000)">
+					<div class="r-hstack justify-center">
+						<div data-id="box1" data-auto-animate-delay="0" style="background: cyan; width: 150px; height: 100px; margin: 10px;"></div>
+						<div data-id="box2" data-auto-animate-delay="0.1" style="background: magenta; width: 150px; height: 100px; margin: 10px;"></div>
+						<div data-id="box3" data-auto-animate-delay="0.2" style="background: yellow; width: 150px; height: 100px; margin: 10px;"></div>
+					</div>
+					<h2 style="margin-top: 20px;">Auto-Animate</h2>
+				</section>
+				<section data-auto-animate data-auto-animate-easing="cubic-bezier(0.770, 0.000, 0.175, 1.000)">
+					<div class="r-stack">
+						<div data-id="box1" style="background: cyan; width: 300px; height: 300px; border-radius: 200px;"></div>
+						<div data-id="box2" style="background: magenta; width: 200px; height: 200px; border-radius: 200px;"></div>
+						<div data-id="box3" style="background: yellow; width: 100px; height: 100px; border-radius: 200px;"></div>
+					</div>
+					<h2 style="margin-top: 20px;">Auto-Animate</h2>
+				</section> -->
+
+				<!-- <section>
+					<h2>Touch Optimized</h2>
+					<p>
+						Presentations look great on touch devices, like mobile phones and tablets. Simply swipe through your slides.
+					</p>
+				</section>
+
+				<section data-markdown>
+					<script type="text/template">
+						## Markdown support
+
+						Write content using inline or external Markdown.
+						Instructions and more info available in the [docs](https://revealjs.com/markdown/).
+
+						```[]
+						<section data-markdown>
+						  ## Markdown support
+
+						  Write content using inline or external Markdown.
+						  Instructions and more info available in the [docs](https://revealjs.com/markdown/).
+						</section>
+						```
+					</script>
+				</section>
+
+				<section>
+					<p>Add the <code>r-fit-text</code> class to auto-size text</p>
+					<h2 class="r-fit-text">FIT TEXT</h2>
+				</section> -->
+
+				<!-- <section>
+					<section id="fragments">
+						<h2>Fragments</h2>
+						<p>Hit the next arrow...</p>
+						<p class="fragment">... to step through ...</p>
+						<p><span class="fragment">... a</span> <span class="fragment">fragmented</span> <span class="fragment">slide.</span></p>
+
+						<aside class="notes">
+							This slide has fragments which are also stepped through in the notes window.
+						</aside>
+					</section>
+					<section>
+						<h2>Fragment Styles</h2>
+						<p>There's different types of fragments, like:</p>
+						<p class="fragment grow">grow</p>
+						<p class="fragment shrink">shrink</p>
+						<p class="fragment fade-out">fade-out</p>
+						<p>
+							<span style="display: inline-block;" class="fragment fade-right">fade-right, </span>
+							<span style="display: inline-block;" class="fragment fade-up">up, </span>
+							<span style="display: inline-block;" class="fragment fade-down">down, </span>
+							<span style="display: inline-block;" class="fragment fade-left">left</span>
+						</p>
+						<p class="fragment fade-in-then-out">fade-in-then-out</p>
+						<p class="fragment fade-in-then-semi-out">fade-in-then-semi-out</p>
+						<p>Highlight <span class="fragment highlight-red">red</span> <span class="fragment highlight-blue">blue</span> <span class="fragment highlight-green">green</span></p>
+					</section>
+				</section>
+
+				<section id="transitions">
+					<h2>Transition Styles</h2>
+					<p>
+						You can select from different transitions, like: <br>
+						<a href="?transition=none#/transitions">None</a> -
+						<a href="?transition=fade#/transitions">Fade</a> -
+						<a href="?transition=slide#/transitions">Slide</a> -
+						<a href="?transition=convex#/transitions">Convex</a> -
+						<a href="?transition=concave#/transitions">Concave</a> -
+						<a href="?transition=zoom#/transitions">Zoom</a>
+					</p>
+				</section> -->
+
+				<!-- <section id="themes">
+					<h2>Themes</h2>
+					<p>
+						reveal.js comes with a few themes built in: <br> -->
+						<!-- Hacks to swap themes after the page has loaded. Not flexible and only intended for the reveal.js demo deck. -->
+						<!-- <a href="#" onclick="document.getElementById('theme').setAttribute('href','dist/theme/black.css'); return false;">Black (default)</a> -
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','dist/theme/white.css'); return false;">White</a> -
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','dist/theme/league.css'); return false;">League</a> -
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','dist/theme/sky.css'); return false;">Sky</a> -
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','dist/theme/beige.css'); return false;">Beige</a> -
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','dist/theme/simple.css'); return false;">Simple</a> <br>
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','dist/theme/serif.css'); return false;">Serif</a> -
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','dist/theme/blood.css'); return false;">Blood</a> -
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','dist/theme/night.css'); return false;">Night</a> -
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','dist/theme/moon.css'); return false;">Moon</a> -
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','dist/theme/solarized.css'); return false;">Solarized</a>
+					</p>
+				</section> -->
+
+				<!-- <section>
+					<section data-background="#dddddd">
+						<h2>Slide Backgrounds</h2>
+						<p>
+							Set <code>data-background="#dddddd"</code> on a slide to change the background color. All CSS color formats are supported.
+						</p>
+						<a href="#" class="navigate-down">
+							<img class="r-frame" style="background: rgba(255,255,255,0.1);" width="178" height="238" data-src="https://static.slid.es/reveal/arrow.png" alt="Down arrow">
+						</a>
+					</section>
+					<section data-background="https://static.slid.es/reveal/image-placeholder.png">
+						<h2>Image Backgrounds</h2>
+						<pre><code class="hljs html">&lt;section data-background="image.png"&gt;</code></pre>
+					</section>
+					<section data-background="https://static.slid.es/reveal/image-placeholder.png" data-background-repeat="repeat" data-background-size="100px">
+						<h2>Tiled Backgrounds</h2>
+						<pre><code class="hljs html" style="word-wrap: break-word;">&lt;section data-background="image.png" data-background-repeat="repeat" data-background-size="100px"&gt;</code></pre>
+					</section>
+					<section data-background-video="https://s3.amazonaws.com/static.slid.es/site/homepage/v1/homepage-video-editor.mp4" data-background-color="#000000">
+						<div style="background-color: rgba(0, 0, 0, 0.9); color: #fff; padding: 20px;">
+							<h2>Video Backgrounds</h2>
+							<pre><code class="hljs html" style="word-wrap: break-word;">&lt;section data-background-video="video.mp4,video.webm"&gt;</code></pre>
+						</div>
+					</section>
+					<section data-background="http://i.giphy.com/90F8aUepslB84.gif">
+						<h2>... and GIFs!</h2>
+					</section>
+				</section> -->
+
+				<!-- <section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom">
+					<h2>Background Transitions</h2>
+					<p>
+						Different background transitions are available via the backgroundTransition option. This one's called "zoom".
+					</p>
+					<pre><code class="hljs javascript">Reveal.configure({ backgroundTransition: 'zoom' })</code></pre>
+				</section>
+
+				<section data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
+					<h2>Background Transitions</h2>
+					<p>
+						You can override background transitions per-slide.
+					</p>
+					<pre><code class="hljs html" style="word-wrap: break-word;">&lt;section data-background-transition="zoom"&gt;</code></pre>
+				</section>
+
+				<section data-background-iframe="https://hakim.se" data-background-interactive>
+					<div style="position: absolute; width: 40%; right: 0; box-shadow: 0 1px 4px rgba(0,0,0,0.5), 0 5px 25px rgba(0,0,0,0.2); background-color: rgba(0, 0, 0, 0.9); color: #fff; padding: 20px; font-size: 20px; text-align: left;">
+						<h2>Iframe Backgrounds</h2>
+						<p>Since reveal.js runs on the web, you can easily embed other web content. Try interacting with the page in the background.</p>
+					</div>
+				</section>
+
+				<section>
+					<h2>Marvelous List</h2>
+					<ul>
+						<li>No order here</li>
+						<li>Or here</li>
+						<li>Or here</li>
+						<li>Or here</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Fantastic Ordered List</h2>
+					<ol>
+						<li>One is smaller than...</li>
+						<li>Two is smaller than...</li>
+						<li>Three!</li>
+					</ol>
+				</section>
+
+				<section>
+					<h2>Tabular Tables</h2>
+					<table>
+						<thead>
+							<tr>
+								<th>Item</th>
+								<th>Value</th>
+								<th>Quantity</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Apples</td>
+								<td>$1</td>
+								<td>7</td>
+							</tr>
+							<tr>
+								<td>Lemonade</td>
+								<td>$2</td>
+								<td>18</td>
+							</tr>
+							<tr>
+								<td>Bread</td>
+								<td>$3</td>
+								<td>2</td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+
+				<section>
+					<h2>Clever Quotes</h2>
+					<p>
+						These guys come in two forms, inline: <q cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">The nice thing about standards is that there are so many to choose from</q> and block:
+					</p>
+					<blockquote cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
+						&ldquo;For years there has been a theory that millions of monkeys typing at random on millions of typewriters would
+						reproduce the entire works of Shakespeare. The Internet has proven this theory to be untrue.&rdquo;
+					</blockquote>
+				</section>
+
+				<section>
+					<h2>Intergalactic Interconnections</h2>
+					<p>
+						You can link between slides internally,
+						<a href="#/2/3">like this</a>.
+					</p>
+				</section>
+
+				<section>
+					<h2>Speaker View</h2>
+					<p>There's a <a href="https://revealjs.com/speaker-view/">speaker view</a>. It includes a timer, preview of the upcoming slide as well as your speaker notes.</p>
+					<p>Press the <em>S</em> key to try it out.</p>
+
+					<aside class="notes">
+						Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
+					</aside>
+				</section>
+
+				<section>
+					<h2>Export to PDF</h2>
+					<p>Presentations can be <a href="https://revealjs.com/pdf-export/">exported to PDF</a>, here's an example:</p>
+					<iframe data-src="https://www.slideshare.net/slideshow/embed_code/42840540" width="445" height="355" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:3px solid #666; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
+				</section>
+
+				<section>
+					<h2>Global State</h2>
+					<p>
+						Set <code>data-state="something"</code> on a slide and <code>"something"</code>
+						will be added as a class to the document element when the slide is open. This lets you
+						apply broader style changes, like switching the page background.
+					</p>
+				</section>
+
+				<section data-state="customevent">
+					<h2>State Events</h2>
+					<p>
+						Additionally custom events can be triggered on a per slide basis by binding to the <code>data-state</code> name.
+					</p>
+					<pre><code class="javascript" data-trim contenteditable style="font-size: 18px;">
+Reveal.on( 'customevent', function() {
+	console.log( '"customevent" has fired' );
+} );
+					</code></pre>
+				</section>
+
+				<section>
+					<h2>Take a Moment</h2>
+					<p>
+						Press B or . on your keyboard to pause the presentation. This is helpful when you're on stage and want to take distracting slides off the screen.
+					</p>
+				</section>
+
+				<section>
+					<h2>Much more</h2>
+					<ul>
+						<li>Right-to-left support</li>
+						<li><a href="https://revealjs.com/api/">Extensive JavaScript API</a></li>
+						<li><a href="https://revealjs.com/auto-slide/">Auto-progression</a></li>
+						<li><a href="https://revealjs.com/backgrounds/#parallax-background">Parallax backgrounds</a></li>
+						<li><a href="https://revealjs.com/keyboard/">Custom keyboard bindings</a></li>
+					</ul>
+				</section>
+
+				<section style="text-align: left;">
+					<h1>THE END</h1>
+					<p>
+						- <a href="https://slides.com">Try the online editor</a> <br>
+						- <a href="https://github.com/hakimel/reveal.js">Source code &amp; documentation</a>
+					</p>
+				</section> -->
+
+			</div>
+
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/zoom/zoom.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/search/search.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+
+			// Also available as an ES module, see:
+			// https://revealjs.com/initialization/
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				center: true,
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealZoom, RevealNotes, RevealSearch, RevealMarkdown, RevealHighlight ]
+			});
+
+		</script>
+
+	</body>
+</html>
